@@ -8,7 +8,6 @@ word=""
 inDict = False
 if(len(sys.argv) == 1):
 	word = wordlist.wordlist[random.randrange(500, len(wordlist.wordlist), 10)]	
-	inDict = True
 else:
 	word = sys.argv[1];
 
@@ -33,9 +32,10 @@ with urllib.request.urlopen(url) as resp:
 		except:
 			pass
 
-if not count == 0 and not inDict:
-	with open(os.path.dirname(os.path.realpath(__file__))+ os.sep + 'wordlist.py','r+') as wri : 
-		wri.seek(0,2);
-		wri.seek(wri.tell()-1,0);
-		wri.write(',"' + word + '"]')
-	print("* New word added to dictionary.")
+if not count == 0 and not len(sys.argv) == 1:
+	if word not in wordlist.wordlist:
+		with open(os.path.dirname(os.path.realpath(__file__))+ os.sep + 'wordlist.py','r+') as wri : 
+			wri.seek(0,2);
+			wri.seek(wri.tell()-1,0);
+			wri.write(',"' + word + '"]')
+		print("* New word added to dictionary.")
