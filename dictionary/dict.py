@@ -4,10 +4,8 @@ import random
 import os
 import wordlist
 
-word=""
-inDict = False
 if(len(sys.argv) == 1):
-	word = wordlist.wordlist[random.randrange(500, len(wordlist.wordlist), 10)]	
+	word = wordlist.wordlist[random.randrange(0, len(wordlist.wordlist), 2)]	
 else:
 	word = sys.argv[1];
 
@@ -31,6 +29,9 @@ with urllib.request.urlopen(url) as resp:
 						count = count + 1
 		except:
 			pass
+
+if count == 0:
+	print("Not found.")
 
 if not count == 0 and not len(sys.argv) == 1:
 	if word not in wordlist.wordlist:
