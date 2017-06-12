@@ -40,9 +40,7 @@ if not count == 0 and not len(sys.argv) == 1:
 			pos = wri.tell();
 			wri.seek(pos-1,0)
 			last_char = wri.read(1)
-			if last_char == '\n': #remove new line character in the end
+			if last_char == '\n': # remove new line character in the end
 				wri.seek(pos-2,0)
-			else:
-				wri.seek(pos-1,0);
 			wri.write(',"' + word + '"]')
 		print("* New word added to dictionary.")
