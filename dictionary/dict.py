@@ -37,6 +37,12 @@ if not count == 0 and not len(sys.argv) == 1:
 	if word not in wordlist.wordlist:
 		with open(os.path.dirname(os.path.realpath(__file__))+ os.sep + 'wordlist.py','r+') as wri : 
 			wri.seek(0,2);
-			wri.seek(wri.tell()-1,0);
+			pos = wri.tell();
+			wri.seek(pos-1,0)
+			last_char = wri.read(1)
+			if last_char == '\n': #remove new line character in the end
+				wri.seek(pos-2,0)
+			else:
+				wri.seek(pos-1,0);
 			wri.write(',"' + word + '"]')
 		print("* New word added to dictionary.")
