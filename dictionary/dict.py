@@ -46,3 +46,5 @@ if not count == 0 and not len(sys.argv) == 1:
 				wri.seek(pos-1,0)
 			wri.write(',"' + word + '"]')
 		print("* New word added to dictionary.")
+
+print("--------------------------------------------------")
