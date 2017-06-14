@@ -2,7 +2,6 @@ import quo
 from random import randint
 
 list_num = randint(0,4)
-print(list_num)
 
 '''
 393
@@ -32,7 +31,7 @@ elif list_num == 3:
 else :
 	quote_num = randint(0,79)
 	print(quo.attitude_quotes[quote_num])
-
+print("--------------------------------------------------")
 '''st = '''
 
 ''';
