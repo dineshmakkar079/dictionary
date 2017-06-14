@@ -2,6 +2,8 @@ import quo
 from random import randint
 
 list_num = randint(0,4)
+print(list_num)
+
 '''
 393
 237
@@ -16,21 +18,21 @@ print(len(quo.attitude_quotes))
 '''
 
 if list_num == 0:
-	quote_num = randint(0,392)
+	quote_num = randint(0,131)
 	print(quo.inspirational_quotes[quote_num])
 elif list_num == 1:
-	quote_num = randint(0,236)
+	quote_num = randint(0,120)
 	print(quo.motivational_quotes[quote_num])
 elif list_num == 2:
-	quote_num = randint(0,999)
+	quote_num = randint(0,152)
 	print(quo.education_quotes[quote_num])
 elif list_num == 3:
-	quote_num = randint(0,999)
+	quote_num = randint(0,174)
 	print(quo.success_quotes[quote_num])
 else :
-	quote_num = randint(0,999)
+	quote_num = randint(0,79)
 	print(quo.attitude_quotes[quote_num])
-print("--------------------------------------------------")
+
 '''st = '''
 
 ''';
