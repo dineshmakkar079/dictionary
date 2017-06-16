@@ -29,7 +29,7 @@ try :
 				related.append(rel)
 		if not len(related) == 0 :
 			print("Related words : " + str(related))
-except Exception,e:
+except Exception as e:
 	print("Some error occured : " + str(e))
 
 if not found:
