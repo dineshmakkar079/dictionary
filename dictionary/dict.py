@@ -29,8 +29,8 @@ try :
 				related.append(rel)
 		if not len(related) == 0 :
 			print("Related words : " + str(related))
-except e:
-	print("Some error occured " + str(e))
+except Exception,e:
+	print("Some error occured : " + str(e))
 
 if not found:
 	print("Not found.")
