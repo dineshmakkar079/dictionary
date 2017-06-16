@@ -1,39 +1,41 @@
 import urllib.request
 import sys
 import random
+import codecs
 import os
+import json
 import wordlist
 
 if(len(sys.argv) == 1):
-	word = wordlist.wordlist[random.randrange(0, len(wordlist.wordlist), 2)]	
+	word = wordlist.wordlist[random.randrange(0, len(wordlist.wordlist), 2)]
 else:
 	word = sys.argv[1];
 
-print(word);
-url = "http://api.pearson.com/v2/dictionaries/entries?headword=" + word
-import json
-count = 0;
-with urllib.request.urlopen(url) as resp:
-	jsonObj = json.loads(resp.read().decode('utf-8'))
-	resultArr = jsonObj["results"]
-	for el in resultArr:
-		try :
-			for sense in el['senses']:
-				defArr = sense['definition']
-				if count < 3 :
-					if len(defArr) == 1 :
-						print('>  ' + defArr[0])
-						count = count + 1
-					else:
-						print('>  ' + defArr)
-						count = count + 1
-		except:
-			pass
+reader = codecs.getreader('utf-8')
 
-if count == 0:
+print(word)
+url = "http://api.wordnik.com/v4/word.json/"+word.lower()+"/definitions?limit=3&includeRelated=true&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5"
+count = 0;
+related = []
+found = True
+try : 
+	with urllib.request.urlopen(url) as resp:
+		found = False
+		jsonObj = json.load(reader(resp))
+		for res in jsonObj:
+			print("> " + res["text"])
+			found = True
+			for rel in res["relatedWords"]:
+				related.append(rel)
+		if not len(related) == 0 :
+			print("Related words : " + str(related))
+except e:
+	print("Some error occured " + str(e))
+
+if not found:
 	print("Not found.")
 
-if not count == 0 and not len(sys.argv) == 1:
+if found and not len(sys.argv) == 1:
 	if word not in wordlist.wordlist:
 		with open(os.path.dirname(os.path.realpath(__file__))+ os.sep + 'wordlist.py','r+') as wri : 
 			wri.seek(0,2);
@@ -47,4 +49,4 @@ if not count == 0 and not len(sys.argv) == 1:
 			wri.write(',"' + word + '"]')
 		print("* New word added to dictionary.")
 
-print("--------------------------------------------------")
+print("--------------------------------------------------")	
