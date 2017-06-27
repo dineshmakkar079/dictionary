@@ -27,6 +27,10 @@ Same as the above but just replace 'dict' by 'python3 /path/to/dict.py'
 </li>
 </ul>
 
+<h2>Demo</h2>
+This is what it looks like
+<img src="https://raw.githubusercontent.com/dineshmakkar079/dictionary/master/sample.png">
+
 <strong>Note : </strong> For better resutls avoid editing wordlist.py file
 <br><br>
 Star the repo if it helped you.
