@@ -37,5 +37,5 @@ Star the repo if it helped you.
 
 <h1>Author</h1>
 <h3>Dinesh Makkar</h3>
-Pre-final year Undergrad<br>
+Final year Undergrad<br>
 IIT Guwahati.
